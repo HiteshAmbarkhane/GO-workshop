@@ -15,6 +15,9 @@ type Circle struct {
 func (r Rectangle) Area() float64 { return r.length * r.width }
 func (c Circle) Area() float64    { return 3.14 * c.radius * c.radius }
 
+func (r Rectangle) Perimeter() float64 { return 2 * (r.length + r.width) }
+func (c Circle) Perimeter() float64    { return 3.14 * c.radius * 2 }
+
 func main() {
 	a, err := strconv.ParseFloat(os.Args[1], 64)
 	if err != nil {
@@ -29,10 +32,10 @@ func main() {
 		}
 		fmt.Printf("Its a Rectangle with a = %v and b = %v\n", a, b)
 		r := Rectangle{a, b}
-		fmt.Println("Rect area = %v", r.Area())
+		fmt.Printf("Rect area = %v perimeter = %v\n", r.Area(), r.Perimeter())
 	} else {
 		fmt.Printf("Its a Circle with radius = %v\n", a)
 		c := Circle{a}
-		fmt.Println("Circle area = %v", c.Area())
+		fmt.Printf("Circle area = %v perimeter = %v\n", c.Area(), c.Perimeter())
 	}
 }
